@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2021_04_12_061614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable"
+    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
-    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower"
+    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
   end
 
   create_table "items", id: :serial, force: :cascade do |t|
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 2021_04_12_061614) do
     t.datetime "created_at"
     t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable"
-    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
+    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|

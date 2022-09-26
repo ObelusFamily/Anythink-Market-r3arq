@@ -13,7 +13,7 @@ services:
     environment:
       - RAILS_ENV=development
       - PORT=3000
-      - DATABASE_URL=postgres://user:@postgres-rails:5432
+      - DATABASE_URL=postgres://${POSTGRES_USER}:@postgres-rails:5432
     depends_on:
       - "postgres-rails"
 
@@ -40,9 +40,9 @@ services:
       driver: none
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ~/posgres/data:/data/db
     ports:
-      - '5433:5432'
+      - '5432:5432'

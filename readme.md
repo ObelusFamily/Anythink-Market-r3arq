@@ -10,4 +10,17 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
-**[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
+- Create a .env file in the root of this project and pass in this values
+```sh
+POSTGRES_USER=myuser
+POSTGRES_PASSWORD=mypassword
+```
+I used the default postgres user, and its password as it's setup on my pgAdmin
+
+- run `docker-compose up` to build and run all containers
+- Go to `http://localhost:3000/api/ping`. If you get a Pending Migrations error, sinply click run migration button available on the error page.
+- If all is well, you should get something similar to this
+
+```json
+{"msg":"Pong! Seems like Everythink is working, great job!"}
+```
